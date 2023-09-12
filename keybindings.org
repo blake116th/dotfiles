@@ -1,5 +1,8 @@
 #+title: Keybindings
 
+* Elisp Stuff
+- C-M-x :: Execute current elisp expression around point
+
 * Magit Bindings
 - C-x g :: Opens Magit - Basically git status in the default view
 - ? :: Show a 'help' popup
@@ -14,7 +17,6 @@
 - SPC b [ :: Next Buffer
 - SPC b ] :: Prev Buffer
 - C x C b :: Emacs builtin buffer menu
-
 
 * Window Controls
 - SPC w h/j/k/l :: Vim-style window movement
