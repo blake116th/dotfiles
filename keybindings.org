@@ -1,6 +1,7 @@
 #+title: Keybindings
 
 * Elisp Stuff
+-[[http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html][Emergency Elisp]] (Recommended to use firefox reader mode with this)
 - C-M-x :: Execute current elisp expression around point
 
 * Magit Bindings

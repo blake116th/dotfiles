@@ -20,6 +20,9 @@
 ;;; Code:
 
 (provide 'caps)
+(require 'cl-lib)
+
+
 
 ;; Blake's Elisp notes
 ;; hello world - t denotes the echo area as the output
@@ -33,3 +36,13 @@
 ;;
 ;; print out to a buffer. Fix these quotes somehow?
 ;; (print "Hello world" (generate-new-buffer "output"))
+
+;; shuffles a random element of a string (or any array)
+(defun caps--shuffle (array)
+  (aref array (random (length array))))
+
+(let ((leftHandChars "qazwsxedcrfvtgby")
+      (rightHandChars "hnujmikolp"))
+  (write-char (caps--sample-random leftHandChars) t))
+
+;; i gave up at this point and decided to write this in Haskell instead
