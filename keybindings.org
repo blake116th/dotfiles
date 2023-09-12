@@ -1,0 +1,24 @@
+#+title: Keybindings
+
+* Magit Bindings
+- C-x g :: Opens Magit - Basically git status in the default view
+- ? :: Show a 'help' popup
+- s / u :: stage / unstage (when selecting some diff or changes)
+- c :: Commit popup
+- t :: Tag popip
+- m :: Merge Popup
+- F :: Pull popup
+
+* Buffer Controls
+- SPC b b :: Change buffer
+- SPC b [ :: Next Buffer
+- SPC b ] :: Prev Buffer
+- C x C b :: Emacs builtin buffer menu
+
+
+* Window Controls
+- SPC w h/j/k/l :: Vim-style window movement
+- SPC w < / > ::  Decrease / Increase window width
+
+* Hard-to-remember Vim stuff
+- C r :: redo
