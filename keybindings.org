@@ -1,6 +1,7 @@
 #+title: Keybindings
 
-* Elisp Stuff
+* Emacs stuff
+- M-; :: Comment out selection (visual mode must be active)
 - C-M-x :: Execute current elisp expression around point
 
 * Magit Bindings
@@ -24,3 +25,9 @@
 
 * Hard-to-remember Vim stuff
 - C r :: redo
+- C d / u :: scroll half a page down / up
+
+* Projectile Bindings
+- SPC p R :: Run
+- SPC p ! :: Run command in project root
+- SPC p . :: Open file (starting in project root)
