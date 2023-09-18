@@ -75,4 +75,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Adding gopls LSP to exec path to get picked up by lsp-mode
+;; ymmv with this command. Might have to be changed
 (add-to-list 'exec-path (substitute-in-file-name "$GOPATH/bin"))

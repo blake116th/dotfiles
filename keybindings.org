@@ -31,3 +31,5 @@
 - SPC p R :: Run
 - SPC p ! :: Run command in project root
 - SPC p . :: Open file (starting in project root)
+- SPC s p :: Search project (a little unexpected)
+- SPC ' :: Repeat previous search
