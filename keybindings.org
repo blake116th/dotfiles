@@ -1,7 +1,10 @@
-#+title: Keybindings
+#+title: Keybindings Cheatsheet
+
+* Generic Emacs stuff
+- C-x C-; :: Comment out selection
 
 * Elisp Stuff
--[[http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html][Emergency Elisp]] (Recommended to use firefox reader mode with this)
+- [[http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html][Emergency Elisp]] (Recommended to use firefox reader mode with this)
 - C-M-x :: Execute current elisp expression around point
 
 * Magit Bindings
@@ -24,4 +27,4 @@
 - SPC w < / > ::  Decrease / Increase window width
 
 * Hard-to-remember Vim stuff
-- C r :: redo
+- C-r :: redo
