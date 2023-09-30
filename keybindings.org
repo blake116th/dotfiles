@@ -1,11 +1,15 @@
 #+title: Keybindings Cheatsheet
 
-* Generic Emacs stuff
-- C-x C-; :: Comment out selection
-
 * Elisp Stuff
 - [[http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html][Emergency Elisp]] (Recommended to use firefox reader mode with this)
+- M-: :: Evaluate an elisp expression in the minibuffer
 - C-M-x :: Execute current elisp expression around point
+
+* Emacs stuff
+- C-x C-; :: Comment out selection
+- M-; :: Comment out selection (visual mode must be active)
+- s-/ :: Even better comment-out-line (consider remapping off super)
+- M-x toggle-debug-on-error :: Toggle opening the debugger when an error occurs. Useful for fixing curious failures.
 
 * Magit Bindings
 - C-x g :: Opens Magit - Basically git status in the default view
@@ -24,7 +28,21 @@
 
 * Window Controls
 - SPC w h/j/k/l :: Vim-style window movement
+- SPC w H/J/K/L :: Vim-style window movement, that swaps the window's position
 - SPC w < / > ::  Decrease / Increase window width
 
 * Hard-to-remember Vim stuff
-- C-r :: redo
+- C r :: redo
+- C d / u :: scroll half a page down / up
+
+* Projectile Bindings
+- SPC p R :: Run
+- SPC p ! :: Run command in project root
+- SPC p . :: Open file (starting in project root)
+- SPC s p :: Search project (a little unexpected)
+- SPC p s :: Save all project buffers
+- SPC ' :: Repeat previous search
+
+* LSP Bindings
+- SPC c l = = :: Format current buffer
+- SPC c l r r :: Format current buffer

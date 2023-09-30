@@ -92,3 +92,24 @@
 
 ;; Map SPC o c to open the cheatsheet in the current window
 (map! :leader "o c" #'cheatsheet)
+
+;; stolen from the internet to fix this stupid mac thing where
+;; the path isn't inherited fully cause emacs isnt launched from terminal context
+;; https://www.emacswiki.org/emacs/ExecPath
+;; 
+;; this fix is hacked together with some changes by yours truly and should probably not be used for non-mac machines
+;; (defun set-exec-path-from-shell-PATH ()
+;;   "Set up Emacs' `exec-path' and PATH environment variable to match
+;; that used by the user's shell.
+
+;; This is particularly useful under Mac OS X and macOS, where GUI
+;; apps are not started from a shell."
+;;   (interactive)
+;;   (let ((path-from-shell (replace-regexp-in-string
+;; 			  "[ \t\n]*$" "" (shell-command-to-string
+;; 					  "source ~/.zshrc && echo $PATH"
+;; 						    ))))
+;;     (setenv "PATH" path-from-shell)
+;;     (setq exec-path (split-string path-from-shell path-separator))))
+
+;; (set-exec-path-from-shell-PATH)
