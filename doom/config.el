@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
+(setq user-full-name "Blake")
 ;;       user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -75,16 +75,23 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Adding gopls LSP to exec path to get picked up by lsp-mode
-;; ymmv with this command. Might have to be changed
-;; (add-to-list 'exec-path (substitute-in-file-name "$GOPATH/bin"))
+;; Some attempts to disable evil mode in vterm.
+;; none of these seem to work. oh well. maybe ask someone who knows their stuff.
+;; (add-hook 'vterm-mode-hook (lambda () (turn-off-evil-mode)))
+;; (evil-set-initial-state 'vterm-mode 'emacs)
+;; (add-hook 'vterm-mode-hook
+          ;; (lambda () (progn
+                ;; (evil-emacs-state)
+                ;; (local-unset-key "ESC")))
 
-;; Adding haskell-lsp to exec path cuz i guess we have to keep doing this shit
-;; (add-to-list 'exec-path "/Users/blake/.ghcup/bin/")
+(let ((cheatsheet-filepath "~/dotfiles/keybindings.org"))
+  (defun cheatsheet ()
+    "Shows blake's cheatsheet notes in the current window"
+    (interactive)
+    (switch-to-buffer (find-file cheatsheet-filepath))))
 
-;; add python installs to path
-;;(add-to-list 'exec-path "/Users/blake/Library/Python/3.9/bin")
-
+;; Map SPC o c to open the cheatsheet in the current window
+(map! :leader "o c" #'cheatsheet)
 
 ;; stolen from the internet to fix this stupid mac thing where
 ;; the path isn't inherited fully cause emacs isnt launched from terminal context
