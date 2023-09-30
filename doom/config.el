@@ -84,6 +84,10 @@
                 ;; (evil-emacs-state)
                 ;; (local-unset-key "ESC")))
 
+;; Assert that Blake dotfiles are in the home directory
+(unless (file-directory-p "~/dotfiles")
+  (error "Looked for Blake's dotfiles in the home directory and didn't find them. This Emacs config depends on these bad bois, so go clone them."))
+
 (let ((cheatsheet-filepath "~/dotfiles/keybindings.org"))
   (defun cheatsheet ()
     "Shows blake's cheatsheet notes in the current window"
@@ -92,6 +96,12 @@
 
 ;; Map SPC o c to open the cheatsheet in the current window
 (map! :leader "o c" #'cheatsheet)
+
+;; Add blake's emacs scripts to the load path
+(add-to-list 'load-path "~/dotfiles/doom/lib")
+
+(require 'typing-drill)
+
 
 ;; stolen from the internet to fix this stupid mac thing where
 ;; the path isn't inherited fully cause emacs isnt launched from terminal context

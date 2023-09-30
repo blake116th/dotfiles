@@ -25,6 +25,8 @@
 - SPC b [ :: Next Buffer
 - SPC b ] :: Prev Buffer
 - C x C b :: Emacs builtin buffer menu
+- SPC b k :: Kill current buffer
+- C x k :: Kill buffer with dropdown
 
 * Window Controls
 - SPC w h/j/k/l :: Vim-style window movement
