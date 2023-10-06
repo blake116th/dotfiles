@@ -9,6 +9,7 @@
 - C-x C-; :: Comment out selection
 - M-; :: Comment out selection (visual mode must be active)
 - s-/ :: Even better comment-out-line (consider remapping off super)
+- SPC b r :: Revert buffer -- also useful for reloading out-of-date tools and such
 - M-x toggle-debug-on-error :: Toggle opening the debugger when an error occurs. Useful for fixing curious failures.
 
 * Magit Bindings
@@ -19,12 +20,14 @@
 - t :: Tag popip
 - m :: Merge Popup
 - F :: Pull popup
+- ` :: Show git's stdout / stderr (magit-process-buffer)
 
 * Buffer Controls
 - SPC b b :: Change buffer
 - SPC b [ :: Next Buffer
 - SPC b ] :: Prev Buffer
 - C x C b :: Emacs builtin buffer menu
+- SPC , :: See above but even radder
 - SPC b k :: Kill current buffer
 - C x k :: Kill buffer with dropdown
 
@@ -44,7 +47,11 @@
 - SPC s p :: Search project (a little unexpected)
 - SPC p s :: Save all project buffers
 - SPC ' :: Repeat previous search
+- SPC * :: Search for current symbol in entire project
 
 * LSP Bindings
 - SPC c l = = :: Format current buffer
 - SPC c l r r :: Format current buffer
+
+* Misc
+- SPC s o :: Internet search (Google, etc.)

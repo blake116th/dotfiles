@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -83,6 +83,15 @@
           ;; (lambda () (progn
                 ;; (evil-emacs-state)
                 ;; (local-unset-key "ESC")))
+
+;; use h and l to navigate in and out of dirs
+(evil-define-key 'normal dired-mode-map
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-find-file)
+
+;; move deleted files to trash
+(setq delete-by-moving-to-trash t
+      trash-directory "~/Trash")
 
 ;; Assert that Blake dotfiles are in the home directory
 (unless (file-directory-p "~/dotfiles")
