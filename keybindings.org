@@ -53,5 +53,12 @@
 - SPC c l = = :: Format current buffer
 - SPC c l r r :: Format current buffer
 
+* Firefox
+- C t :: New tab
+- C w :: Close tab
+- C l :: Jump to address bar
+- C TAB / C S-TAB :: Toggle through tabs
+- M 1 - 9 :: Jump to tab 1 - 9
+
 * Misc
 - SPC s o :: Internet search (Google, etc.)
