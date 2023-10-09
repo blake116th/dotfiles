@@ -51,7 +51,12 @@
 
 * LSP Bindings
 - SPC c l = = :: Format current buffer
-- SPC c l r r :: Format current buffer
+- SPC c r :: Rename
+- SPC c a :: Execute code action
+- SPC e l :: List flycheck errors
+- SPC e p / n :: Previous / next flycheck error
+- SPC e y :: Yank error into clipboard
+- C-c ! :: Full flycheck menu
 
 * Firefox
 - C t :: New tab
@@ -62,3 +67,5 @@
 
 * Misc
 - SPC s o :: Internet search (Google, etc.)
+- SPC : :: Speedier M-x
+- SPC ; :: Speedier M-:

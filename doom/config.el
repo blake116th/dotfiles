@@ -93,6 +93,17 @@
 (setq delete-by-moving-to-trash t
       trash-directory "~/Trash")
 
+(map! :leader "o c" #'cheatsheet)
+
+;; Bindings for Flycheck errors
+(map! :leader
+      (:prefix ("e" . "Errors (Flycheck)")
+      "p" #'flycheck-previous-error
+      "n" #'flycheck-next-error
+      "l" #'flycheck-list-errors
+      "y" #'flycheck-copy-errors-as-kill))
+
+
 ;; Assert that Blake dotfiles are in the home directory
 (unless (file-directory-p "~/dotfiles")
   (error "Looked for Blake's dotfiles in the home directory and didn't find them. This Emacs config depends on these bad bois, so go clone them."))
@@ -117,18 +128,18 @@
 ;; https://www.emacswiki.org/emacs/ExecPath
 ;; 
 ;; this fix is hacked together with some changes by yours truly and should probably not be used for non-mac machines
-;; (defun set-exec-path-from-shell-PATH ()
-;;   "Set up Emacs' `exec-path' and PATH environment variable to match
-;; that used by the user's shell.
+(defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match
+that used by the user's shell.
 
-;; This is particularly useful under Mac OS X and macOS, where GUI
-;; apps are not started from a shell."
-;;   (interactive)
-;;   (let ((path-from-shell (replace-regexp-in-string
-;; 			  "[ \t\n]*$" "" (shell-command-to-string
-;; 					  "source ~/.zshrc && echo $PATH"
-;; 						    ))))
-;;     (setenv "PATH" path-from-shell)
-;;     (setq exec-path (split-string path-from-shell path-separator))))
+This is particularly useful under Mac OS X and macOS, where GUI
+apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string
+			  "[ \t\n]*$" "" (shell-command-to-string
+					  "source ~/.zshrc && echo $PATH"
+						    ))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
 
-;; (set-exec-path-from-shell-PATH)
+(set-exec-path-from-shell-PATH)
