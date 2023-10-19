@@ -8,7 +8,9 @@
 * Emacs stuff
 - C-x C-; :: Comment out selection
 - M-; :: Comment out selection (visual mode must be active)
-- s-/ :: Even better comment-out-line (consider remapping off super)
+- M-u :: Uppercase current word
+- C-x C-u :: Uppercase current highlighted region
+- S-/ :: Even better comment-out-line (consider remapping off super)
 - SPC b r :: Revert buffer -- also useful for reloading out-of-date tools and such
 - M-x toggle-debug-on-error :: Toggle opening the debugger when an error occurs. Useful for fixing curious failures.
 
@@ -69,3 +71,4 @@
 - SPC s o :: Internet search (Google, etc.)
 - SPC : :: Speedier M-x
 - SPC ; :: Speedier M-:
+- C-l :: Clear interpreter / term
