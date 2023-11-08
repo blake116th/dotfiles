@@ -40,6 +40,7 @@
 
 * Hard-to-remember Vim stuff
 - C r :: redo
+- C o / C i :: previous / next cursor jump
 - C d / u :: scroll half a page down / up
 
 * Projectile Bindings
@@ -58,6 +59,7 @@
 - SPC e l :: List flycheck errors
 - SPC e p / n :: Previous / next flycheck error
 - SPC e y :: Yank error into clipboard
+- SPC c l h h :: Symbol info (type and definintion)
 - C-c ! :: Full flycheck menu
 
 * Firefox
@@ -67,8 +69,16 @@
 - C TAB / C S-TAB :: Toggle through tabs
 - M 1 - 9 :: Jump to tab 1 - 9
 
+* i3
+- s-t :: change to tabbed mode
+- s-e :: change to tiling (default) mode
+- s-shift-SPC :: float /unfloat current window
+- s-SPC :: focus / unfocus floating window
+- s-C :: reload i3 config
+
 * Misc
 - SPC s o :: Internet search (Google, etc.)
 - SPC : :: Speedier M-x
 - SPC ; :: Speedier M-:
 - C-l :: Clear interpreter / term
+- C-r :: Emacs reverse search (term history lookup)

@@ -103,6 +103,8 @@
       "l" #'flycheck-list-errors
       "y" #'flycheck-copy-errors-as-kill))
 
+;; disable default ruby lsp
+(setq lsp-disabled-clients '(ruby-lsp-ls))
 
 ;; Assert that Blake dotfiles are in the home directory
 (unless (file-directory-p "~/dotfiles")
