@@ -1,0 +1,7 @@
+import = [
+	"~/dotfiles/alacritty/gruvbox_dark.toml"
+]
+
+[font]
+size = 8.0
+
