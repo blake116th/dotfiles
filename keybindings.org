@@ -6,6 +6,7 @@
 - C-M-x :: Execute current elisp expression around point
 
 * Emacs stuff
+- C-z :: Toggle evil mode
 - C-x C-; :: Comment out selection
 - M-; :: Comment out selection (visual mode must be active)
 - M-u :: Uppercase current word
@@ -26,10 +27,12 @@
 
 * Buffer Controls
 - SPC b b :: Change buffer
+- SPC b s :: Save buffer
 - SPC b [ :: Next Buffer
 - SPC b ] :: Prev Buffer
 - C x C b :: Emacs builtin buffer menu
 - SPC , :: See above but even radder
+- SPC f r :: Open Recent file
 - SPC b k :: Kill current buffer
 - C x k :: Kill buffer with dropdown
 
@@ -40,6 +43,7 @@
 
 * Hard-to-remember Vim stuff
 - C r :: redo
+- R :: Replace mode
 - C o / C i :: previous / next cursor jump
 - C d / u :: scroll half a page down / up
 
@@ -47,7 +51,8 @@
 - SPC p R :: Run
 - SPC p ! :: Run command in project root
 - SPC p . :: Open file (starting in project root)
-- SPC s p :: Search project (a little unexpected)
+- SPC s p :: Search project grep-style (a little unexpected)
+- SPC f p :: Find file in project
 - SPC p s :: Save all project buffers
 - SPC ' :: Repeat previous search
 - SPC * :: Search for current symbol in entire project
@@ -66,15 +71,18 @@
 - C t :: New tab
 - C w :: Close tab
 - C l :: Jump to address bar
-- C TAB / C S-TAB :: Toggle through tabs
+- C-M-r :: Toggle reader mode
+- C-TAB / C-S-TAB :: Toggle through tabs
 - M 1 - 9 :: Jump to tab 1 - 9
 
 * i3
 - s-t :: change to tabbed mode
 - s-e :: change to tiling (default) mode
-- s-shift-SPC :: float /unfloat current window
+- s-SHIFT-SPC :: Float /Unfloat Current Window
 - s-SPC :: focus / unfocus floating window
 - s-C :: reload i3 config
+- s-a :: Focus parent node
+- s-SHIFT-a :: Focus child node
 
 * Misc
 - SPC s o :: Internet search (Google, etc.)

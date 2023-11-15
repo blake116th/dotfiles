@@ -15,3 +15,12 @@ nnoremap <A-CR> O<Esc>
 
 "reserve space for leader
 nnoremap <SPACE> <Nop>
+
+call plug#begin()
+ 
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark    " Setting dark mode for gruvbox
