@@ -35,6 +35,7 @@
 - SPC f r :: Open Recent file
 - SPC b k :: Kill current buffer
 - C x k :: Kill buffer with dropdown
+- P :: (In treemacs) Peek mode
 
 * Window Controls
 - SPC w h/j/k/l :: Vim-style window movement
@@ -90,3 +91,20 @@
 - SPC ; :: Speedier M-:
 - C-l :: Clear interpreter / term
 - C-r :: Emacs reverse search (term history lookup)
+
+* Org mode
+- C-c @ :: Select around current subtree
+- SPC m h :: Toggle heading
+- SPC m e :: Export options
+- SPC m g g :: Go to a heading
+- TAB :: Toggle visibility
+- SHIFT-TAB :: Cycle full doc visibility
+- org-emphasize :: Surround selection with bold, italic, strikethrough, etc.
+** Table
+ - SPC m b a :: Align
+ - SPC m b b :: Clear Cell
+ - SPC m b - :: Insert hline
+ - RET (INSERT) :: New row
+ - O (NORMAL) :: New row
+ - RET (NORMAL) :: Modify current cell
+ - TAB / S-TAB :: Next / prev cell
