@@ -25,8 +25,22 @@ function FormatWithBlack()
     vim.fn.winrestview(saved_view)
 end
 
+function FormatWithSQLFluff()
+    -- Save the current cursor position
+    local saved_view = vim.fn.winsaveview()
+
+    -- Format the buffer with black
+    vim.api.nvim_command('silent! %!sqlfluff fix --dialect postgres - 2> /dev/null')
+
+    -- Restore the saved cursor position
+    vim.fn.winrestview(saved_view)
+end
+
 -- automatically format python buffers when saved
 vim.api.nvim_command('autocmd BufWritePre *.py lua FormatWithBlack()')
+
+-- automatically format sql buffers when saved (ASSUMES POSTGRES DIALECT!)
+vim.api.nvim_command('autocmd BufWritePre *.sql lua FormatWithSQLFluff()')
 
 -- same thing for html (seems to botch jinja templates)
 -- vim.api.nvim_command('autocmd BufWritePre *.html silent! %!tidy -i --tidy-mark no --show-body-only yes 2> /dev/null')
