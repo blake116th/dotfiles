@@ -1,7 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -69,35 +69,42 @@ vim.api.nvim_command('tnoremap <Esc> <C-\\><C-n>')
 
 -- Setup lazy.nvim
 require("lazy").setup({
-	spec = { { import = 'plugins' } },
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "gruvbox" } },
-	-- automatically check for plugin updates
-	checker = { enabled = true },
+    spec = { { import = 'plugins' } },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    install = { colorscheme = { "gruvbox" } },
+    -- automatically check for plugin updates
+    checker = { enabled = true },
 })
 
 local lsp = require 'lspconfig'
 local coq = require 'coq'
 
-lsp.pyright.setup(coq.lsp_ensure_capabilities())
-lsp.lua_ls.setup(coq.lsp_ensure_capabilities({
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { 'vim' },
-			},
-		},
-	},
-}))
+vim.lsp.config('pyright', coq.lsp_ensure_capabilities())
+vim.lsp.enable('pyright')
 
-lsp.tailwindcss.setup(coq.lsp_ensure_capabilities())
+vim.lsp.config('lua_ls', coq.lsp_ensure_capabilities({
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+        },
+    },
+}))
+vim.lsp.enable('lua_ls')
+
+vim.lsp.config('tailwindcss', coq.lsp_ensure_capabilities())
+vim.lsp.enable('tailwindcss')
+
+vim.lsp.config('html', coq.lsp_ensure_capabilities())
+vim.lsp.enable('html')
 
 vim.g.coq_settings.clients = {
-		lsp = {
-				always_on_top = {} -- lsp results should always be on top
-		}
+    lsp = {
+        always_on_top = {} -- lsp results should always be on top
+    }
 }
 
 -- set theme
@@ -137,7 +144,7 @@ vim.keymap.set('n', '<leader>bs', '<cmd>w<cr>', {})
 vim.keymap.set('n', '<leader>h', '<cmd>noh<cr>', {})
 
 -- goto prev and next errors
-vim.keymap.set('n', '<leader>xn', function() vim.diagnostic.goto_next() end , {})
+vim.keymap.set('n', '<leader>xn', function() vim.diagnostic.goto_next() end, {})
 vim.keymap.set('n', '<leader>xp', function() vim.diagnostic.goto_prev() end, {})
 
 -- make it easier to move windows with leader + hjkl
@@ -152,7 +159,7 @@ vim.keymap.set('n', '<leader>bd', '<cmd>bp<bar>sp<bar>bn<bar>bd<CR>', {})
 
 -- format buffer with :Format
 vim.api.nvim_create_user_command('Format', function()
-	vim.lsp.buf.format()
+    vim.lsp.buf.format()
 end, {})
 
 vim.cmd([[
