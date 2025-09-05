@@ -1,0 +1,9 @@
+# aliases in one place
+# source this, don't exec it (duh)
+
+alias python="uvx python"
+alias vim="nvim"
+
+# tui finder-based git commands
+alias switch="git branch | fzf | xargs git switch"
+alias add="git -c color.status=always status --short | fzf --ansi | cut -c4- | xargs git add"
