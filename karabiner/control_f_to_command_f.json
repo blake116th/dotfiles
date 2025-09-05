@@ -1,0 +1,25 @@
+{
+  "title": "Map Control-F to Command-F",
+  "rules": [
+    {
+      "description": "Change Control-F to Command-F",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f",
+              "modifiers": ["command"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
