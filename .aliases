@@ -6,4 +6,79 @@ alias vim="nvim"
 
 # tui finder-based git commands
 alias switch="git branch | fzf | xargs git switch"
+alias branch="switch"
 alias add="git -c color.status=always status --short | fzf --ansi | cut -c4- | xargs git add"
+
+# zsh-compatible smart_test
+function smart_test() {
+  # smart_test: pick a base commit via fzf, find changed spec files since then,
+  # and run your test command against them.
+
+  # Define the test command + file matching rules
+  # <TEST> / <TESTS> will be where the test files are interpolated
+  # <TEST>  → runs once per file
+  # <TESTS> → runs once with all files
+  # If neither appears, all files are appended to the end of the command.
+  local test_cmd='docker compose run --rm --entrypoint "bin/rspec <TESTS>" web'
+  local test_prefix="spec/"
+  local test_suffix=".rb"
+
+  # Pick a base commit interactively
+  local selection
+  selection=$(git log --oneline --graph --decorate --color=always --max-count=2000 \
+    | fzf --ansi --reverse --height=50% --prompt='Test files changed between HEAD and: ') || return
+
+  # Strip ANSI and extract the first SHA-looking token
+  local selection_clean commit_hash
+  selection_clean=$(printf '%s' "$selection" | sed -E 's/\x1B\[[0-9;]*[mK]//g')
+  commit_hash=$(printf '%s' "$selection_clean" | grep -oE '[a-f0-9]{7,40}' | head -n1) || true
+
+  if [[ -z "$commit_hash" ]]; then
+    printf '%s\n' "Could not parse a commit hash from the selection." >&2
+    return 1
+  fi
+
+  # Gather changed test files since the selected commit
+  local changed_files_raw
+  changed_files_raw=$(git diff --name-only "${commit_hash}..HEAD" \
+    | grep "^${test_prefix}.*${test_suffix}$" \
+    | sort -u)
+
+  if [[ -z "$changed_files_raw" ]]; then
+    printf '%s\n' "No test files changed since $commit_hash"
+    return 0
+  fi
+
+  local -a files
+  files=(${(f)changed_files_raw})
+
+  # Decide which interpolation mode to use based on placeholders in test_cmd
+  if [[ "$test_cmd" == *"<TESTS>"* ]]; then
+    # One command, all files as args (safely quoted)
+    local joined rendered_cmd
+    joined=$(printf ' %q' -- "${files[@]}")
+    joined=${joined# }
+
+    rendered_cmd=${test_cmd//<TESTS>/$joined}
+    printf '\033[1;32m[smart_test] >>> \033[0m %s\n' "$rendered_cmd"
+    eval "$rendered_cmd"
+
+  elif [[ "$test_cmd" == *"<TEST>"* ]]; then
+    # Per-file execution
+    local file rendered
+    for file in "${files[@]}"; do
+      rendered=${test_cmd//<TEST>/$file}
+      printf '\033[1;32m[smart_test] >>> \033[0m %s\n' "$rendered"
+      eval "$rendered"
+    done
+  else
+    # No placeholders — append all files to the end
+    local joined appended
+    joined=$(printf ' %q' -- "${files[@]}")
+    joined=${joined# }
+
+    appended="$test_cmd $joined"
+    printf '\033[1;32m[smart_test] >>> \033[0m %s\n' "$appended"
+    eval "$appended"
+  fi
+}

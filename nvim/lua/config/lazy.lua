@@ -116,10 +116,17 @@ vim.keymap.set('n', '<leader>j', '<c-w>j', {})
 vim.keymap.set('n', '<leader>k', '<c-w>k', {})
 vim.keymap.set('n', '<leader>l', '<c-w>l', {})
 
--- Clear search highlight with <Esc><Esc>
-vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", {
-  silent = true,
-  desc = "Clear search highlight on double esc",
+-- Autocmd to set up buffer-local mapping for normal buffers only
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local bt = vim.bo[args.buf].buftype
+    local ft = vim.bo[args.buf].filetype
+    if bt == "" and ft ~= "help" then
+      vim.keymap.set("n", "<Esc><Esc>", function()
+        vim.cmd.nohlsearch()
+      end, { buffer = args.buf, silent = true, desc = "Clear hlsearch on double Esc" })
+    end
+  end,
 })
 
 -- kill buffer but not window

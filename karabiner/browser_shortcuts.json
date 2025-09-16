@@ -1,0 +1,35 @@
+{
+  "title": "Ctrl+T → Cmd+T in Chrome & Firefox",
+  "rules": [
+    {
+      "description": "Map Ctrl+T to Cmd+T when Chrome or Firefox is frontmost",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": ["control"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": ["command"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
