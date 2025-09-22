@@ -4,6 +4,9 @@
 alias python="uvx python"
 alias vim="nvim"
 
+# critical workflow command courtesy of John F. Papanikolau
+alias burn-rome="echo 'Porn collection deleted'"
+
 # tui finder-based git commands
 alias switch="git branch | fzf | xargs git switch"
 alias branch="switch"

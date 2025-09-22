@@ -45,6 +45,20 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="${yellow}*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="${dark_aqua})%{$reset_color%}"
 
+# Truncate long git branch names in the prompt
+function git_prompt_info() {
+  local ref
+  ref=$(git_current_branch)
+  if [[ -n "$ref" ]]; then
+    local max=10
+    local display="$ref"
+    if (( ${#display} > max )); then
+      display="${display[1,$max]}…"
+    fi
+    echo "${ZSH_THEME_GIT_PROMPT_PREFIX}${display}$(parse_git_dirty)${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+  fi
+}
+
 # hg settings
 ZSH_THEME_HG_PROMPT_PREFIX=" ${FG[075]}(${FG[078]}"
 ZSH_THEME_HG_PROMPT_CLEAN=""
