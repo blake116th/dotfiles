@@ -10,6 +10,7 @@ alias burn-rome="echo 'Porn collection deleted'"
 # tui finder-based git commands
 alias switch="git branch | fzf | xargs git switch"
 alias branch="switch"
+alias sw="switch"
 alias add="git -c color.status=always status --short | fzf --ansi | cut -c4- | xargs git add"
 
 # zsh-compatible smart_test
