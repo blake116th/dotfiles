@@ -1,8 +1,21 @@
 # aliases in one place
 # source this, don't exec it (duh)
 
-alias python="uvx python"
-alias vim="nvim"
+alias python="python3"
+
+# if we're in a nvim term, dont' open another nested nvim!
+# instead, send it to the current session
+if [[ -n "$NVIM" && -x "$(command -v nvr)" ]]; then
+  alias vim='nvr'
+  alias nvim='nvr'
+  export EDITOR='nvr'
+
+  # Special case for Git (so it waits until buffer closes)
+  export GIT_EDITOR='nvr --remote-wait'
+else
+  alias vim='nvim'
+  export EDITOR='nvim'
+fi
 
 # critical workflow command courtesy of John F. Papanikolau
 alias burn-rome="echo 'Porn collection deleted'"
