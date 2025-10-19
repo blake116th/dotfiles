@@ -12,6 +12,9 @@ if [[ -n "$NVIM" && -x "$(command -v nvr)" ]]; then
 
   # Special case for Git (so it waits until buffer closes)
   export GIT_EDITOR='nvr --remote-wait'
+
+  # same for fc
+  export FCEDIT='nvr --remote-wait'
 else
   alias vim='nvim'
   export EDITOR='nvim'
